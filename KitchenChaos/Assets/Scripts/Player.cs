@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleMovement();
+        HandleInteractions();
     }
 
     public bool IsWalking()
@@ -23,7 +24,9 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalize();
+
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
+
         float moveDistance = moveSpeed * Time.deltaTime;
         float playerRadius = .7f;
         float playerHeight = 2f;
@@ -54,27 +57,21 @@ public class Player : MonoBehaviour
         }
         if (canMove)
         {
-            transform.position = moveDir * moveDistance;
+            transform.position += moveDir * moveDistance;
             isWalking = moveDir != Vector3.zero;
             transform.forward = Vector3.Slerp(transform.forward, moveDir, rotateSpeed * Time.deltaTime);
 
         }
 
-
-        transform.position += moveDir * moveSpeed * Time.deltaTime;
-
-        isWalking = moveDir != Vector3.zero;
-
-        transform.forward = Vector3.Slerp(transform.forward, moveDir, rotateSpeed * Time.deltaTime);
     }
     
     private void HandleInteractions()
     {
         Vector2 inputVector = gameInput.GetMovementVectorNormalize();
         Vector3 moveDir = new Vector3(inputVector.x, 0f, inputVector.y);
-        float interactDÝstance = 2f;
+        float interactDistance = 2f;
 
-        if(Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, interactDÝstance)) 
+        if(Physics.Raycast(transform.position, moveDir, out RaycastHit raycastHit, interactDistance)) 
         {
             Debug.Log(raycastHit.transform);
         }
