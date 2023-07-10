@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,19 @@ using UnityEngine;
 public class GameInput : MonoBehaviour
 {
     private PlayerInput playerInputActions;
+    public event EventHandler OnInteractActions;
+
     private void Awake()
     {
         playerInputActions = new PlayerInput();
         playerInputActions.Player.Enable();
-    }
-    void Start()
-    {
-        
+
+        playerInputActions.Player.Interact.performed += Interact_performed;
     }
 
-    
-    void Update()
+    private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-       
-
-        
+        OnInteractActions?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetMovementVectorNormalize()
@@ -33,4 +31,6 @@ public class GameInput : MonoBehaviour
 
         return inputVector;
     }
+
+    
 }
