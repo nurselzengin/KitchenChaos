@@ -88,8 +88,10 @@ GameObject:
   - component: {fileID: 7881557110064211061}
   - component: {fileID: 7174504577083531778}
   - component: {fileID: 9125376384630123924}
+  - component: {fileID: 7781604389745153559}
+  - component: {fileID: 4049601382489017658}
   m_Layer: 6
-  m_Name: Canvas
+  m_Name: ProgressBarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,6 +182,33 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7781604389745153559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944737395879689363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e5c26741ef94543a8e4c3c9414b7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuttingCounter: {fileID: 3468427922676143038}
+  bar: {fileID: 197879375156585664}
+--- !u!114 &4049601382489017658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1944737395879689363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4cc90ccd715e2a43b8d155b0017c07b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 2
 --- !u!1 &4563522964464976105
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +625,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 4458205786031630920}
   kitchenObject: {fileID: 0}
-  cutKitchenObjectSO: {fileID: 11400000, guid: f8690bc73eafcac4995d6becffbd85df, type: 2}
   cuttingRecipeSOArray:
   - {fileID: 11400000, guid: b44f0aff6a26777448bc6a77b4ecc7d3, type: 2}
   - {fileID: 11400000, guid: ac0a8f6d54b023a4583c69e9daed2894, type: 2}
@@ -684,8 +712,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: d72bee846803d074784ffb8f64e993ca,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4178989854527777261}
   m_SourcePrefab: {fileID: 100100000, guid: d72bee846803d074784ffb8f64e993ca, type: 3}
+--- !u!1 &2056589090092362782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: d72bee846803d074784ffb8f64e993ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 2538776636095678644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4178989854527777261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056589090092362782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb670b53db2b0a458316d70a7c784d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cuttingCounter: {fileID: 3468427922676143038}
 --- !u!4 &2056589090092362783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: d72bee846803d074784ffb8f64e993ca,

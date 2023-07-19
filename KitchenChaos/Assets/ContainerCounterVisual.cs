@@ -21,7 +21,6 @@ public class ContainerCounterVisual : MonoBehaviour
     private void ContainerCounter_OnPlayerGrabbedObject(object sender, System.EventArgs e)
     {
         anim.SetTrigger(OPEN_CLOSE);
-        Debug.Log("idf");
     }
 
 }
