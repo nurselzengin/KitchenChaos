@@ -23,7 +23,7 @@ public class LookAtCamera : MonoBehaviour
                 transform.LookAt(Camera.main.transform); 
                 break;
             case Mode.LookAtInvert:
-                Vector3 dirFromCamera = transform.position - Camera.main.transform.forward;
+                Vector3 dirFromCamera = transform.position - Camera.main.transform.position;
                 transform.LookAt(transform.position + dirFromCamera);
                 break;
             case Mode.CameraForward:

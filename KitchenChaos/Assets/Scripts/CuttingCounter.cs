@@ -4,17 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter, IHasProgress
 {
     [SerializeField] CuttingRecipeSO[] cuttingRecipeSOArray;
     
-    public event EventHandler OnProgressBarChange;
-    public event EventHandler<OnProgressBarChangedEventArgs> OnProgressBarChanged;
+   
+    public event EventHandler<IHasProgress.OnProgressChangeArgs> OnProgressChange;
 
-    public class OnProgressBarChangedEventArgs : EventArgs
-    {
-        public float progressNormalized;
-    }
     public event EventHandler OnCut;
 
     private int cuttingProgress;
@@ -31,7 +27,7 @@ public class CuttingCounter : BaseCounter
                     cuttingProgress = 0;
 
                     CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectsSO());
-                    OnProgressBarChange?.Invoke(this, new OnProgressBarChangedEventArgs
+                    OnProgressChange?.Invoke(this, new IHasProgress.OnProgressChangeArgs
                     {
                         progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
                     });
@@ -46,7 +42,13 @@ public class CuttingCounter : BaseCounter
         {
             if (player.HasKitchenObject())
             {
-
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                {
+                    if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectsSO()))
+                    {
+                        GetKitchenObject().DestroySelf();
+                    }
+                }
             }
             else
             {
@@ -63,7 +65,7 @@ public class CuttingCounter : BaseCounter
             OnCut?.Invoke(this, EventArgs.Empty);
 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectsSO());
-            OnProgressBarChanged?.Invoke(this, new OnProgressBarChangedEventArgs
+            OnProgressChange?.Invoke(this, new IHasProgress.OnProgressChangeArgs
             {
                 progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
             });
