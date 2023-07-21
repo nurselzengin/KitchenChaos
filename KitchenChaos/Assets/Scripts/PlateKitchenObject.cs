@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using JetBrains.Annotations;
 
 public class PlateKitchenObject : KitchenObject
 {
-
+    public event EventHandler<OnIngredientAddedEventArgs> OnIngredientAdded;
+    public class OnIngredientAddedEventArgs : EventArgs
+    { 
+        public KitchenObjectsSO KitchenObjectSO;
+    }
     [SerializeField] private List<KitchenObjectsSO> validKitchenObjectsSOList;
 
     private List<KitchenObjectsSO> kitchenObjectsSOList;
-    public event EventHandler<OnIngredientAddedEventArgs> OnIngredientAdded;
-
-    public class OnIngredientAddedEventArgs : EventArgs
-    {
-        public KitchenObjectsSO kitchenObjectsSO;
-    }
+   
 
     private void Awake()
     {
@@ -34,7 +34,18 @@ public class PlateKitchenObject : KitchenObject
         else
         {
             kitchenObjectsSOList.Add(kitchenObjectsSO);
+            OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs
+            {
+                KitchenObjectSO = kitchenObjectsSO
+            });
             return true;
         }
+
+        
+    }
+
+    public List<KitchenObjectsSO> GetKitchenObjectsSOList()
+    {
+        return kitchenObjectsSOList;
     }
 }
