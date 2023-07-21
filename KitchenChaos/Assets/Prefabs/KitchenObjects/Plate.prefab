@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9053526068635812594}
-  - component: {fileID: 1606919607048956211}
   - component: {fileID: 6437520734909075794}
   m_Layer: 0
   m_Name: Plate
@@ -34,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1606919607048956211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9123314169543083675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dfaadef1c182594b8a77b77173f5360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kitchenObjectsSO: {fileID: 11400000, guid: fd6842534c6952d478308eb9e9675712, type: 2}
 --- !u!114 &6437520734909075794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1013cf592476b0478f033052123544f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectsSO: {fileID: 0}
+  kitchenObjectsSO: {fileID: 11400000, guid: fd6842534c6952d478308eb9e9675712, type: 2}
   validKitchenObjectsSOList:
   - {fileID: 11400000, guid: 4a05b0fd898f8cd42bdf67e9e3422114, type: 2}
   - {fileID: 11400000, guid: ee22ae2b5b9e09945837199814fed7c1, type: 2}
